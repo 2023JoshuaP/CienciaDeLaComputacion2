@@ -1,0 +1,84 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Laboratorio dos</title>
+    <script type = "text/javascript">
+        function limpiar_contenido() {
+            var vacio = "";
+            document.getElementById("Text1").value = vacio;
+            document.getElementById("Text2").value = vacio;
+            document.getElementById("RadioButtonM").checked = false;
+            document.getElementById("RadioButtonF").checked = false;
+            document.getElementById("Text3").value = vacio;
+            document.getElementById("Text4").value = vacio;
+            document.getElementById("DropDownListCiudad").value = 0;
+            document.getElementById("Text5").value = vacio;
+            return false;
+        }
+        function validate() {
+            var text3Value = document.getElementById("Text3").value;
+            var emailPattern = /^[A-Za-z0-9._%+-]+@unsa\.edu\.pe$/;
+            if (emailPattern.endsWith("@unsa.edu.pe")) {
+                alert("Ingresaste");
+                return false;
+            }
+            else {
+                alert("No ingresaste");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id ="form1" runat ="server">
+
+    
+    <h1>REGISTRO DE ALUMNOS:</h1>
+    <div>
+        <label for="Text1">Nombres:</label>
+        <input id="Text1" type="text" required="true"/>
+    </div>
+    <div>
+        <label for="Text2">Apellidos:</label>
+        <input id="Text2" type="text" required="true"/>
+    </div>
+    <div>
+        <label>Sexo:</label>
+        <label>
+            <input type="radio" name="gender" value="masculino" required="true" />
+            Masculino
+        </label>
+        <label>
+            <input type="radio" name="gender" value="femenino" required="true" />
+            Femenino
+        </label>
+    </div>
+    <div>
+        <label for="Text3">Email:</label>
+        <input id="Text3" type="email" required="true"/>
+    </div>
+    <div>
+        <label for="Text4">Dirección:</label>
+        <input id="Text4" type="text" required="true"/>
+        <label for="select">Ciudad:</label>
+        <select name="select">
+            <option value="ayacucho">Ayacucho</option>
+            <option value="arequipa">Arequipa</option>
+            <option value="lima">Lima</option>
+            <option value="puno">Puno</option>
+        </select>
+    </div>
+    <div>
+        <label for="Text5">Requerimientos:</label>
+    </div>
+    <div>
+        <textarea id="Text5" required="true" style="width: 200px; height: 100px"></textarea>
+    </div>
+    <div>
+        <asp:Button ID="Button1" runat="server" Text="Limpiar" OneClientClick="return limpiar_contenido();"/>
+        <asp:Button ID="Button2" runat="server" Text="Enviar" OneClientClick="return validate();"/>
+    </div>
+    </form>
+</body>
+</html>
